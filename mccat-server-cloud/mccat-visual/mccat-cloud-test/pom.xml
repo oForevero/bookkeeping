@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mccat-visual</artifactId>
+        <groupId>top.mccat.server</groupId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <artifactId>mccat-cloud-test</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>top.mccat.server</groupId>
+            <artifactId>mccat-manager-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+    <modules>
+        <module>mccat-cloud-test-shardingsphere</module>
+        <module>mccat-cloud-test-more</module>
+        <module>mccat-cloud-test-rabbitmq</module>
+        <module>mccat-cloud-test-seata</module>
+    </modules>
+</project>

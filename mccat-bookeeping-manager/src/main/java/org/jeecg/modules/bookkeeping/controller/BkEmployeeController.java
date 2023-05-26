@@ -35,7 +35,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmployeeService> {
 	@Autowired
 	private IBkEmployeeService bkEmployeeService;
-	
+
 	/**
 	 * 分页列表查询
 	 *
@@ -57,7 +57,7 @@ public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmploye
 		IPage<BkEmployee> pageList = bkEmployeeService.page(page, queryWrapper);
 		return Result.OK(pageList);
 	}
-	
+
 	/**
 	 *   添加
 	 *
@@ -72,7 +72,7 @@ public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmploye
 		bkEmployeeService.save(bkEmployee);
 		return Result.OK("添加成功！");
 	}
-	
+
 	/**
 	 *  编辑
 	 *
@@ -87,7 +87,7 @@ public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmploye
 		bkEmployeeService.updateById(bkEmployee);
 		return Result.OK("编辑成功!");
 	}
-	
+
 	/**
 	 *   通过id删除
 	 *
@@ -102,7 +102,7 @@ public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmploye
 		bkEmployeeService.removeById(id);
 		return Result.OK("删除成功!");
 	}
-	
+
 	/**
 	 *  批量删除
 	 *
@@ -117,7 +117,7 @@ public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmploye
 		this.bkEmployeeService.removeByIds(Arrays.asList(ids.split(",")));
 		return Result.OK("批量删除成功!");
 	}
-	
+
 	/**
 	 * 通过id查询
 	 *

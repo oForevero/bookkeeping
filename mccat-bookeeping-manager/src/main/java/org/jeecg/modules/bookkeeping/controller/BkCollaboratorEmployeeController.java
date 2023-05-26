@@ -35,7 +35,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 public class BkCollaboratorEmployeeController extends JeecgController<BkCollaboratorEmployee, IBkCollaboratorEmployeeService> {
 	@Autowired
 	private IBkCollaboratorEmployeeService bkCollaboratorEmployeeService;
-	
+
 	/**
 	 * 分页列表查询
 	 *
@@ -57,7 +57,7 @@ public class BkCollaboratorEmployeeController extends JeecgController<BkCollabor
 		IPage<BkCollaboratorEmployee> pageList = bkCollaboratorEmployeeService.page(page, queryWrapper);
 		return Result.OK(pageList);
 	}
-	
+
 	/**
 	 *   添加
 	 *
@@ -72,7 +72,7 @@ public class BkCollaboratorEmployeeController extends JeecgController<BkCollabor
 		bkCollaboratorEmployeeService.save(bkCollaboratorEmployee);
 		return Result.OK("添加成功！");
 	}
-	
+
 	/**
 	 *  编辑
 	 *
@@ -87,7 +87,7 @@ public class BkCollaboratorEmployeeController extends JeecgController<BkCollabor
 		bkCollaboratorEmployeeService.updateById(bkCollaboratorEmployee);
 		return Result.OK("编辑成功!");
 	}
-	
+
 	/**
 	 *   通过id删除
 	 *
@@ -102,7 +102,7 @@ public class BkCollaboratorEmployeeController extends JeecgController<BkCollabor
 		bkCollaboratorEmployeeService.removeById(id);
 		return Result.OK("删除成功!");
 	}
-	
+
 	/**
 	 *  批量删除
 	 *
@@ -117,7 +117,7 @@ public class BkCollaboratorEmployeeController extends JeecgController<BkCollabor
 		this.bkCollaboratorEmployeeService.removeByIds(Arrays.asList(ids.split(",")));
 		return Result.OK("批量删除成功!");
 	}
-	
+
 	/**
 	 * 通过id查询
 	 *

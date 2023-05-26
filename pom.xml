@@ -18,7 +18,7 @@
 		<developerConnection>https://qiaoqiaoyun.com</developerConnection>
 		<url>http://www.jeecg.com/vip</url>
 	</scm>
-	
+
   	<parent>
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-parent</artifactId>
@@ -78,6 +78,7 @@
         <module>mccat-manager-common</module>
         <module>mccat-module-demo</module>
         <module>mccat-manager-module-system</module>
+		<module>mccat-bookeeping-manager</module>
 	</modules>
 
 	<repositories>
@@ -413,7 +414,7 @@
 			<url>http://maven.jeecg.com:8090/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
-	
+
     <!-- 环境 -->
     <profiles>
         <!-- 开发 -->

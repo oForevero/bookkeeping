@@ -1,10 +1,13 @@
 package org.jeecg.modules.bookkeeping.controller;
 
 import java.util.Arrays;
+import java.util.List;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.query.QueryGenerator;
+import org.jeecg.modules.bookkeeping.domain.utils.OptSelectResult;
 import org.jeecg.modules.bookkeeping.entity.BkCollaborator;
 import org.jeecg.modules.bookkeeping.service.IBkCollaboratorService;
 
@@ -33,17 +36,17 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 @RequestMapping("/bookkeeping/bkCollaborator")
 @Slf4j
 public class BkCollaboratorController extends JeecgController<BkCollaborator, IBkCollaboratorService> {
-	@Autowired
+	@Resource
 	private IBkCollaboratorService bkCollaboratorService;
 
 	/**
 	 * 分页列表查询
 	 *
-	 * @param bkCollaborator
-	 * @param pageNo
-	 * @param pageSize
-	 * @param req
-	 * @return
+	 * @param bkCollaborator 数据对象
+	 * @param pageNo 当前页
+	 * @param pageSize 每页展示数
+	 * @param req 请求对象
+	 * @return result对象
 	 */
 	@AutoLog(value = "供货商/客户-分页列表查询")
 	@ApiOperation(value="供货商/客户-分页列表查询", notes="供货商/客户-分页列表查询")
@@ -58,15 +61,41 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 		return Result.OK(pageList);
 	}
 
-	@AutoLog(value = "供货商/客户-分页分类列表查询")
-	@ApiOperation(value="供货商/客户-分页分类列表查询", notes="供货商/客户-分页分类列表查询")
-	@GetMapping(value = "/listGroup")
-	public Result<IPage<BkCollaborator>> queryPageByType(@RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
+	 /**
+	  * 查询进货客户
+	  * @param pageNo 当前页
+	  * @param pageSize 每页可展示数量，目前写死为 5
+	  * @param req req 对象
+	  * @return result对象
+	  */
+	@AutoLog(value = "供货商/客户-进货分页分类列表查询")
+	@ApiOperation(value="供货商/客户-进货分页分类列表查询", notes="供货商/客户-进货分页分类列表查询")
+	@GetMapping(value = "/listPurchaseGroup")
+	public Result<List<OptSelectResult<BkCollaborator>>> queryPurchaseByType(@RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 														 @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
 														 HttpServletRequest req){
-
-		return Result.OK(null);
+		Page<BkCollaborator> page = new Page<BkCollaborator>(pageNo, 5);
+		List<OptSelectResult<BkCollaborator>> optSelectResults = service.listPurchaseCollaborator(page);
+		return Result.OK("获取成功！",optSelectResults);
 	}
+
+	 /**
+	  * 查询进货客户
+	  * @param pageNo 当前页
+	  * @param pageSize 每页可展示数量，目前写死为 5
+	  * @param req req 对象
+	  * @return result对象
+	  */
+	 @AutoLog(value = "供货商/客户-销售分页分类列表查询")
+	 @ApiOperation(value="供货商/客户-销售分页分类列表查询", notes="供货商/客户-销售分页分类列表查询")
+	 @GetMapping(value = "/listSellGroup")
+	 public Result<List<OptSelectResult<BkCollaborator>>> querySellByType(@RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
+																		  @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
+																		  HttpServletRequest req){
+		 Page<BkCollaborator> page = new Page<BkCollaborator>(pageNo, 5);
+		 List<OptSelectResult<BkCollaborator>> optSelectResults = service.listSellCollaborator(page);
+		 return Result.OK("获取成功！",optSelectResults);
+	 }
 
 	/**
 	 *   添加

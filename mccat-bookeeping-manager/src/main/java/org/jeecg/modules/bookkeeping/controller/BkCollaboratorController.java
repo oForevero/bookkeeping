@@ -71,7 +71,7 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 	@AutoLog(value = "供货商/客户-进货分页分类列表查询")
 	@ApiOperation(value="供货商/客户-进货分页分类列表查询", notes="供货商/客户-进货分页分类列表查询")
 	@GetMapping(value = "/listPurchaseGroup")
-	public Result<List<OptSelectResult<BkCollaborator>>> queryPurchaseByType(String name,
+	public Result<List<OptSelectResult<BkCollaborator>>> queryPurchaseByType(@RequestBody String name,
 									@RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 									@RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
 									HttpServletRequest req){
@@ -90,7 +90,7 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 	 @AutoLog(value = "供货商/客户-销售分页分类列表查询")
 	 @ApiOperation(value="供货商/客户-销售分页分类列表查询", notes="供货商/客户-销售分页分类列表查询")
 	 @GetMapping(value = "/listSellGroup")
-	 public Result<List<OptSelectResult<BkCollaborator>>> querySellByType(String name,
+	 public Result<List<OptSelectResult<BkCollaborator>>> querySellByType(@RequestBody String name,
 			 						@RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 									@RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
 									HttpServletRequest req){

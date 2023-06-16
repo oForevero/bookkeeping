@@ -19,16 +19,16 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * @Description: bk_collaborator_employee
+ * @Description: 供货商/客户_employee
  * @Author: Raven
  * @Date:   2023-05-26
  * @Version: V1.0
  */
 @Data
-@TableName("bk_collaborator_employee")
+@TableName("供货商/客户_employee")
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="bk_collaborator_employee对象", description="bk_collaborator_employee")
+@ApiModel(value="供货商/客户_employee对象", description="供货商/客户_employee")
 public class BkCollaboratorEmployee implements Serializable {
     private static final long serialVersionUID = 1L;
 

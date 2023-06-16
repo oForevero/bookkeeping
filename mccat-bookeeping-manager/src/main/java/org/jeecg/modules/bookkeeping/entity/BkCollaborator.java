@@ -19,16 +19,16 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * @Description: bk_collaborator
+ * @Description: 供货商/客户
  * @Author: Raven
  * @Date:   2023-05-26
  * @Version: V1.0
  */
 @Data
-@TableName("bk_collaborator")
+@TableName("供货商/客户")
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="bk_collaborator对象", description="bk_collaborator")
+@ApiModel(value="供货商/客户对象", description="供货商/客户")
 public class BkCollaborator implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,7 @@ public class BkCollaborator implements Serializable {
 	/**厂商/个体 公司固话/手机号码*/
 	@Excel(name = "厂商/个体 公司固话/手机号码", width = 15)
     @ApiModelProperty(value = "厂商/个体 公司固话/手机号码")
-    private Integer companyTel;
+    private String companyTel;
 	/**是否还在合作，0为正常，1为不合作*/
 	@Excel(name = "是否还在合作，0为正常，1为不合作", width = 15)
     @ApiModelProperty(value = "是否还在合作，0为正常，1为不合作")

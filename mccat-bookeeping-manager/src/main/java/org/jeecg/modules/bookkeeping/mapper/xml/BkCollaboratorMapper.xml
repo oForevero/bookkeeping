@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.jeecg.modules.bookkeeping.mapper.BkCollaboratorMapper">
-
+    <!--用于新增时查询所有客户/供货商的sql-->
+    <sql id="findGroupByCollaborator">
+        select bc.id,bc.company_name FROM bk_collaborator bc WHERE bc.collaborator_status = 0
+    </sql>
+    <select id="getAllPurchaseSelfCollaborator" resultType="org.jeecg.modules.bookkeeping.entity.BkCollaborator">
+        <include refid="findGroupByCollaborator"/>
+        and bc.collaborator_type != 1 and bc.collaborator_scale = 1
+    </select>
+    <select id="getAllPurchaseCompanyCollaborator" resultType="org.jeecg.modules.bookkeeping.entity.BkCollaborator">
+        <include refid="findGroupByCollaborator"/>
+        and bc.collaborator_type != 1 and bc.collaborator_scale = 2
+    </select>
+    <select id="getAllSellSelfCollaborator" resultType="org.jeecg.modules.bookkeeping.entity.BkCollaborator">
+        <include refid="findGroupByCollaborator"/>
+        and bc.collaborator_type != 0 and bc.collaborator_scale = 1
+    </select>
+    <select id="getAllSellCompanyCollaborator" resultType="org.jeecg.modules.bookkeeping.entity.BkCollaborator">
+        <include refid="findGroupByCollaborator"/>
+        and bc.collaborator_type != 0 and bc.collaborator_scale = 2
+    </select>
 </mapper>

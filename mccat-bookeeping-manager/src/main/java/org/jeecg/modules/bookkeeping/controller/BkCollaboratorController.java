@@ -30,7 +30,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
  */
 @Api(tags="bk_collaborator")
 @RestController
-@RequestMapping("/org.jeecg.bookkeeping/bkCollaborator")
+@RequestMapping("/bookkeeping/bkCollaborator")
 @Slf4j
 public class BkCollaboratorController extends JeecgController<BkCollaborator, IBkCollaboratorService> {
 	@Autowired
@@ -66,7 +66,7 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 	 */
 	@AutoLog(value = "bk_collaborator-添加")
 	@ApiOperation(value="bk_collaborator-添加", notes="bk_collaborator-添加")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_collaborator:add")
+	@RequiresPermissions("bookkeeping:bk_collaborator:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody BkCollaborator bkCollaborator) {
 		bkCollaboratorService.save(bkCollaborator);
@@ -81,7 +81,7 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 	 */
 	@AutoLog(value = "bk_collaborator-编辑")
 	@ApiOperation(value="bk_collaborator-编辑", notes="bk_collaborator-编辑")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_collaborator:edit")
+	@RequiresPermissions("bookkeeping:bk_collaborator:edit")
 	@RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.POST})
 	public Result<String> edit(@RequestBody BkCollaborator bkCollaborator) {
 		bkCollaboratorService.updateById(bkCollaborator);
@@ -96,7 +96,7 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 	 */
 	@AutoLog(value = "bk_collaborator-通过id删除")
 	@ApiOperation(value="bk_collaborator-通过id删除", notes="bk_collaborator-通过id删除")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_collaborator:delete")
+	@RequiresPermissions("bookkeeping:bk_collaborator:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
 		bkCollaboratorService.removeById(id);
@@ -111,7 +111,7 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 	 */
 	@AutoLog(value = "bk_collaborator-批量删除")
 	@ApiOperation(value="bk_collaborator-批量删除", notes="bk_collaborator-批量删除")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_collaborator:deleteBatch")
+	@RequiresPermissions("bookkeeping:bk_collaborator:deleteBatch")
 	@DeleteMapping(value = "/deleteBatch")
 	public Result<String> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
 		this.bkCollaboratorService.removeByIds(Arrays.asList(ids.split(",")));
@@ -141,7 +141,7 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
     * @param request
     * @param bkCollaborator
     */
-    @RequiresPermissions("org.jeecg.bookkeeping:bk_collaborator:exportXls")
+    @RequiresPermissions("bookkeeping:bk_collaborator:exportXls")
     @RequestMapping(value = "/exportXls")
     public ModelAndView exportXls(HttpServletRequest request, BkCollaborator bkCollaborator) {
         return super.exportXls(request, bkCollaborator, BkCollaborator.class, "bk_collaborator");
@@ -154,7 +154,7 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
     * @param response
     * @return
     */
-    @RequiresPermissions("org.jeecg.bookkeeping:bk_collaborator:importExcel")
+    @RequiresPermissions("bookkeeping:bk_collaborator:importExcel")
     @RequestMapping(value = "/importExcel", method = RequestMethod.POST)
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, BkCollaborator.class);

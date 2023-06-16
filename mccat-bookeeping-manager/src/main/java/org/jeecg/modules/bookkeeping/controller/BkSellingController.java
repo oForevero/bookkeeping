@@ -30,7 +30,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
  */
 @Api(tags="bk_selling")
 @RestController
-@RequestMapping("/org.jeecg.bookkeeping/bkSelling")
+@RequestMapping("/bookkeeping/bkSelling")
 @Slf4j
 public class BkSellingController extends JeecgController<BkSelling, IBkSellingService> {
 	@Autowired
@@ -66,7 +66,7 @@ public class BkSellingController extends JeecgController<BkSelling, IBkSellingSe
 	 */
 	@AutoLog(value = "bk_selling-添加")
 	@ApiOperation(value="bk_selling-添加", notes="bk_selling-添加")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_selling:add")
+	@RequiresPermissions("bookkeeping:bk_selling:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody BkSelling bkSelling) {
 		bkSellingService.save(bkSelling);
@@ -81,7 +81,7 @@ public class BkSellingController extends JeecgController<BkSelling, IBkSellingSe
 	 */
 	@AutoLog(value = "bk_selling-编辑")
 	@ApiOperation(value="bk_selling-编辑", notes="bk_selling-编辑")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_selling:edit")
+	@RequiresPermissions("bookkeeping:bk_selling:edit")
 	@RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.POST})
 	public Result<String> edit(@RequestBody BkSelling bkSelling) {
 		bkSellingService.updateById(bkSelling);
@@ -96,7 +96,7 @@ public class BkSellingController extends JeecgController<BkSelling, IBkSellingSe
 	 */
 	@AutoLog(value = "bk_selling-通过id删除")
 	@ApiOperation(value="bk_selling-通过id删除", notes="bk_selling-通过id删除")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_selling:delete")
+	@RequiresPermissions("bookkeeping:bk_selling:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
 		bkSellingService.removeById(id);
@@ -111,7 +111,7 @@ public class BkSellingController extends JeecgController<BkSelling, IBkSellingSe
 	 */
 	@AutoLog(value = "bk_selling-批量删除")
 	@ApiOperation(value="bk_selling-批量删除", notes="bk_selling-批量删除")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_selling:deleteBatch")
+	@RequiresPermissions("bookkeeping:bk_selling:deleteBatch")
 	@DeleteMapping(value = "/deleteBatch")
 	public Result<String> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
 		this.bkSellingService.removeByIds(Arrays.asList(ids.split(",")));
@@ -141,7 +141,7 @@ public class BkSellingController extends JeecgController<BkSelling, IBkSellingSe
     * @param request
     * @param bkSelling
     */
-    @RequiresPermissions("org.jeecg.bookkeeping:bk_selling:exportXls")
+    @RequiresPermissions("bookkeeping:bk_selling:exportXls")
     @RequestMapping(value = "/exportXls")
     public ModelAndView exportXls(HttpServletRequest request, BkSelling bkSelling) {
         return super.exportXls(request, bkSelling, BkSelling.class, "bk_selling");
@@ -154,7 +154,7 @@ public class BkSellingController extends JeecgController<BkSelling, IBkSellingSe
     * @param response
     * @return
     */
-    @RequiresPermissions("org.jeecg.bookkeeping:bk_selling:importExcel")
+    @RequiresPermissions("bookkeeping:bk_selling:importExcel")
     @RequestMapping(value = "/importExcel", method = RequestMethod.POST)
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, BkSelling.class);

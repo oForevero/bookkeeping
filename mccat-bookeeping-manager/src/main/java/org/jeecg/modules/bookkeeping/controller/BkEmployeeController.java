@@ -30,7 +30,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
  */
 @Api(tags="bk_employee")
 @RestController
-@RequestMapping("/org.jeecg.bookkeeping/bkEmployee")
+@RequestMapping("/bookkeeping/bkEmployee")
 @Slf4j
 public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmployeeService> {
 	@Autowired
@@ -66,7 +66,7 @@ public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmploye
 	 */
 	@AutoLog(value = "bk_employee-添加")
 	@ApiOperation(value="bk_employee-添加", notes="bk_employee-添加")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_employee:add")
+	@RequiresPermissions("bookkeeping:bk_employee:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody BkEmployee bkEmployee) {
 		bkEmployeeService.save(bkEmployee);
@@ -81,7 +81,7 @@ public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmploye
 	 */
 	@AutoLog(value = "bk_employee-编辑")
 	@ApiOperation(value="bk_employee-编辑", notes="bk_employee-编辑")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_employee:edit")
+	@RequiresPermissions("bookkeeping:bk_employee:edit")
 	@RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.POST})
 	public Result<String> edit(@RequestBody BkEmployee bkEmployee) {
 		bkEmployeeService.updateById(bkEmployee);
@@ -96,7 +96,7 @@ public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmploye
 	 */
 	@AutoLog(value = "bk_employee-通过id删除")
 	@ApiOperation(value="bk_employee-通过id删除", notes="bk_employee-通过id删除")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_employee:delete")
+	@RequiresPermissions("bookkeeping:bk_employee:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
 		bkEmployeeService.removeById(id);
@@ -111,7 +111,7 @@ public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmploye
 	 */
 	@AutoLog(value = "bk_employee-批量删除")
 	@ApiOperation(value="bk_employee-批量删除", notes="bk_employee-批量删除")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_employee:deleteBatch")
+	@RequiresPermissions("bookkeeping:bk_employee:deleteBatch")
 	@DeleteMapping(value = "/deleteBatch")
 	public Result<String> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
 		this.bkEmployeeService.removeByIds(Arrays.asList(ids.split(",")));
@@ -141,7 +141,7 @@ public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmploye
     * @param request
     * @param bkEmployee
     */
-    @RequiresPermissions("org.jeecg.bookkeeping:bk_employee:exportXls")
+    @RequiresPermissions("bookkeeping:bk_employee:exportXls")
     @RequestMapping(value = "/exportXls")
     public ModelAndView exportXls(HttpServletRequest request, BkEmployee bkEmployee) {
         return super.exportXls(request, bkEmployee, BkEmployee.class, "bk_employee");
@@ -154,7 +154,7 @@ public class BkEmployeeController extends JeecgController<BkEmployee, IBkEmploye
     * @param response
     * @return
     */
-    @RequiresPermissions("org.jeecg.bookkeeping:bk_employee:importExcel")
+    @RequiresPermissions("bookkeeping:bk_employee:importExcel")
     @RequestMapping(value = "/importExcel", method = RequestMethod.POST)
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, BkEmployee.class);

@@ -23,14 +23,14 @@ import org.jeecg.common.aspect.annotation.AutoLog;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 
  /**
- * @Description: bk_purchase
+ * @Description: 进货流水数据接口
  * @Author: Raven
  * @Date:   2023-05-26
  * @Version: V1.0
  */
-@Api(tags="bk_purchase")
+@Api(tags="进货流水")
 @RestController
-@RequestMapping("/org.jeecg.bookkeeping/bkPurchase")
+@RequestMapping("/bookkeeping/bkPurchase")
 @Slf4j
 public class BkPurchaseController extends JeecgController<BkPurchase, IBkPurchaseService> {
 	@Autowired
@@ -66,7 +66,7 @@ public class BkPurchaseController extends JeecgController<BkPurchase, IBkPurchas
 	 */
 	@AutoLog(value = "bk_purchase-添加")
 	@ApiOperation(value="bk_purchase-添加", notes="bk_purchase-添加")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_purchase:add")
+	@RequiresPermissions("bookkeeping:bk_purchase:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody BkPurchase bkPurchase) {
 		bkPurchaseService.save(bkPurchase);
@@ -81,7 +81,7 @@ public class BkPurchaseController extends JeecgController<BkPurchase, IBkPurchas
 	 */
 	@AutoLog(value = "bk_purchase-编辑")
 	@ApiOperation(value="bk_purchase-编辑", notes="bk_purchase-编辑")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_purchase:edit")
+	@RequiresPermissions("bookkeeping:bk_purchase:edit")
 	@RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.POST})
 	public Result<String> edit(@RequestBody BkPurchase bkPurchase) {
 		bkPurchaseService.updateById(bkPurchase);
@@ -96,7 +96,7 @@ public class BkPurchaseController extends JeecgController<BkPurchase, IBkPurchas
 	 */
 	@AutoLog(value = "bk_purchase-通过id删除")
 	@ApiOperation(value="bk_purchase-通过id删除", notes="bk_purchase-通过id删除")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_purchase:delete")
+	@RequiresPermissions("bookkeeping:bk_purchase:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
 		bkPurchaseService.removeById(id);
@@ -111,7 +111,7 @@ public class BkPurchaseController extends JeecgController<BkPurchase, IBkPurchas
 	 */
 	@AutoLog(value = "bk_purchase-批量删除")
 	@ApiOperation(value="bk_purchase-批量删除", notes="bk_purchase-批量删除")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_purchase:deleteBatch")
+	@RequiresPermissions("bookkeeping:bk_purchase:deleteBatch")
 	@DeleteMapping(value = "/deleteBatch")
 	public Result<String> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
 		this.bkPurchaseService.removeByIds(Arrays.asList(ids.split(",")));
@@ -141,7 +141,7 @@ public class BkPurchaseController extends JeecgController<BkPurchase, IBkPurchas
     * @param request
     * @param bkPurchase
     */
-    @RequiresPermissions("org.jeecg.bookkeeping:bk_purchase:exportXls")
+    @RequiresPermissions("bookkeeping:bk_purchase:exportXls")
     @RequestMapping(value = "/exportXls")
     public ModelAndView exportXls(HttpServletRequest request, BkPurchase bkPurchase) {
         return super.exportXls(request, bkPurchase, BkPurchase.class, "bk_purchase");
@@ -154,7 +154,7 @@ public class BkPurchaseController extends JeecgController<BkPurchase, IBkPurchas
     * @param response
     * @return
     */
-    @RequiresPermissions("org.jeecg.bookkeeping:bk_purchase:importExcel")
+    @RequiresPermissions("bookkeeping:bk_purchase:importExcel")
     @RequestMapping(value = "/importExcel", method = RequestMethod.POST)
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, BkPurchase.class);

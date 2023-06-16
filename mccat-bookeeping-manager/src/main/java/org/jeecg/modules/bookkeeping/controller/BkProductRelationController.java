@@ -30,7 +30,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
  */
 @Api(tags="bk_product_relation")
 @RestController
-@RequestMapping("/org.jeecg.bookkeeping/bkProductRelation")
+@RequestMapping("/bookkeeping/bkProductRelation")
 @Slf4j
 public class BkProductRelationController extends JeecgController<BkProductRelation, IBkProductRelationService> {
 	@Autowired
@@ -66,7 +66,7 @@ public class BkProductRelationController extends JeecgController<BkProductRelati
 	 */
 	@AutoLog(value = "bk_product_relation-添加")
 	@ApiOperation(value="bk_product_relation-添加", notes="bk_product_relation-添加")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_product_relation:add")
+	@RequiresPermissions("bookkeeping:bk_product_relation:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody BkProductRelation bkProductRelation) {
 		bkProductRelationService.save(bkProductRelation);
@@ -81,7 +81,7 @@ public class BkProductRelationController extends JeecgController<BkProductRelati
 	 */
 	@AutoLog(value = "bk_product_relation-编辑")
 	@ApiOperation(value="bk_product_relation-编辑", notes="bk_product_relation-编辑")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_product_relation:edit")
+	@RequiresPermissions("bookkeeping:bk_product_relation:edit")
 	@RequestMapping(value = "/edit", method = {RequestMethod.PUT,RequestMethod.POST})
 	public Result<String> edit(@RequestBody BkProductRelation bkProductRelation) {
 		bkProductRelationService.updateById(bkProductRelation);
@@ -96,7 +96,7 @@ public class BkProductRelationController extends JeecgController<BkProductRelati
 	 */
 	@AutoLog(value = "bk_product_relation-通过id删除")
 	@ApiOperation(value="bk_product_relation-通过id删除", notes="bk_product_relation-通过id删除")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_product_relation:delete")
+	@RequiresPermissions("bookkeeping:bk_product_relation:delete")
 	@DeleteMapping(value = "/delete")
 	public Result<String> delete(@RequestParam(name="id",required=true) String id) {
 		bkProductRelationService.removeById(id);
@@ -111,7 +111,7 @@ public class BkProductRelationController extends JeecgController<BkProductRelati
 	 */
 	@AutoLog(value = "bk_product_relation-批量删除")
 	@ApiOperation(value="bk_product_relation-批量删除", notes="bk_product_relation-批量删除")
-	@RequiresPermissions("org.jeecg.bookkeeping:bk_product_relation:deleteBatch")
+	@RequiresPermissions("bookkeeping:bk_product_relation:deleteBatch")
 	@DeleteMapping(value = "/deleteBatch")
 	public Result<String> deleteBatch(@RequestParam(name="ids",required=true) String ids) {
 		this.bkProductRelationService.removeByIds(Arrays.asList(ids.split(",")));
@@ -141,7 +141,7 @@ public class BkProductRelationController extends JeecgController<BkProductRelati
     * @param request
     * @param bkProductRelation
     */
-    @RequiresPermissions("org.jeecg.bookkeeping:bk_product_relation:exportXls")
+    @RequiresPermissions("bookkeeping:bk_product_relation:exportXls")
     @RequestMapping(value = "/exportXls")
     public ModelAndView exportXls(HttpServletRequest request, BkProductRelation bkProductRelation) {
         return super.exportXls(request, bkProductRelation, BkProductRelation.class, "bk_product_relation");
@@ -154,7 +154,7 @@ public class BkProductRelationController extends JeecgController<BkProductRelati
     * @param response
     * @return
     */
-    @RequiresPermissions("org.jeecg.bookkeeping:bk_product_relation:importExcel")
+    @RequiresPermissions("bookkeeping:bk_product_relation:importExcel")
     @RequestMapping(value = "/importExcel", method = RequestMethod.POST)
     public Result<?> importExcel(HttpServletRequest request, HttpServletResponse response) {
         return super.importExcel(request, response, BkProductRelation.class);

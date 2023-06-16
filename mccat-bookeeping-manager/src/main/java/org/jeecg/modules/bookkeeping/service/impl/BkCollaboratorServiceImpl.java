@@ -27,22 +27,22 @@ public class BkCollaboratorServiceImpl extends ServiceImpl<BkCollaboratorMapper,
     BkCollaboratorMapper mapper;
 
     @Override
-    public List<OptSelectResult<BkCollaborator>> listPurchaseCollaborator(Page<BkCollaborator> page) {
+    public List<OptSelectResult<BkCollaborator>> listPurchaseCollaborator(Page<BkCollaborator> page, String name) {
         List<OptSelectResult<BkCollaborator>> bkCollaboratorPurchase= new ArrayList<>();
         //获取个体数据
-        bkCollaboratorPurchase.add(new OptSelectResult<>("selfPurchase", mapper.getAllPurchaseSelfCollaborator(page).getRecords()));
+        bkCollaboratorPurchase.add(new OptSelectResult<>("selfPurchase", mapper.getAllPurchaseSelfCollaborator(page, name).getRecords()));
         //获取个体数据
-        bkCollaboratorPurchase.add(new OptSelectResult<>("companyPurchase", mapper.getAllPurchaseCompanyCollaborator(page).getRecords()));
+        bkCollaboratorPurchase.add(new OptSelectResult<>("companyPurchase", mapper.getAllPurchaseCompanyCollaborator(page, name).getRecords()));
         return bkCollaboratorPurchase;
     }
 
     @Override
-    public List<OptSelectResult<BkCollaborator>> listSellCollaborator(Page<BkCollaborator> page) {
+    public List<OptSelectResult<BkCollaborator>> listSellCollaborator(Page<BkCollaborator> page, String name) {
         List<OptSelectResult<BkCollaborator>> bkCollaboratorSell= new ArrayList<>();
         //获取个体数据
-        bkCollaboratorSell.add(new OptSelectResult<>("selfSell", mapper.getAllSellSelfCollaborator(page).getRecords()));
+        bkCollaboratorSell.add(new OptSelectResult<>("selfSell", mapper.getAllSellSelfCollaborator(page, name).getRecords()));
         //获取个体数据
-        bkCollaboratorSell.add(new OptSelectResult<>("companySell", mapper.getAllSellCompanyCollaborator(page).getRecords()));
+        bkCollaboratorSell.add(new OptSelectResult<>("companySell", mapper.getAllSellCompanyCollaborator(page, name).getRecords()));
         return bkCollaboratorSell;
     }
 }

@@ -64,18 +64,19 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 	 /**
 	  * 查询进货客户
 	  * @param pageNo 当前页
-	  * @param pageSize 每页可展示数量，目前写死为 5
+	  * @param pageSize 每页可展示数量，目前写死为 10
 	  * @param req req 对象
 	  * @return result对象
 	  */
 	@AutoLog(value = "供货商/客户-进货分页分类列表查询")
 	@ApiOperation(value="供货商/客户-进货分页分类列表查询", notes="供货商/客户-进货分页分类列表查询")
 	@GetMapping(value = "/listPurchaseGroup")
-	public Result<List<OptSelectResult<BkCollaborator>>> queryPurchaseByType(@RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
-														 @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
-														 HttpServletRequest req){
-		Page<BkCollaborator> page = new Page<BkCollaborator>(pageNo, 5);
-		List<OptSelectResult<BkCollaborator>> optSelectResults = service.listPurchaseCollaborator(page);
+	public Result<List<OptSelectResult<BkCollaborator>>> queryPurchaseByType(String name,
+									@RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
+									@RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
+									HttpServletRequest req){
+		Page<BkCollaborator> page = new Page<BkCollaborator>(pageNo, 10);
+		List<OptSelectResult<BkCollaborator>> optSelectResults = service.listPurchaseCollaborator(page, name);
 		return Result.OK("获取成功！",optSelectResults);
 	}
 
@@ -89,11 +90,12 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 	 @AutoLog(value = "供货商/客户-销售分页分类列表查询")
 	 @ApiOperation(value="供货商/客户-销售分页分类列表查询", notes="供货商/客户-销售分页分类列表查询")
 	 @GetMapping(value = "/listSellGroup")
-	 public Result<List<OptSelectResult<BkCollaborator>>> querySellByType(@RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
-																		  @RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
-																		  HttpServletRequest req){
-		 Page<BkCollaborator> page = new Page<BkCollaborator>(pageNo, 5);
-		 List<OptSelectResult<BkCollaborator>> optSelectResults = service.listSellCollaborator(page);
+	 public Result<List<OptSelectResult<BkCollaborator>>> querySellByType(String name,
+			 						@RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
+									@RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
+									HttpServletRequest req){
+		 Page<BkCollaborator> page = new Page<BkCollaborator>(pageNo, 10);
+		 List<OptSelectResult<BkCollaborator>> optSelectResults = service.listSellCollaborator(page, name);
 		 return Result.OK("获取成功！",optSelectResults);
 	 }
 

@@ -18,14 +18,16 @@ public interface IBkCollaboratorService extends IService<BkCollaborator> {
     /**
      * 用于 select 的供货商数据
      * @param page 分页对象
+     * @param name 姓名
      * @return 供货商人员page数据
      */
-    List<OptSelectResult<BkCollaborator>> listPurchaseCollaborator(Page<BkCollaborator> page);
+    List<OptSelectResult<BkCollaborator>> listPurchaseCollaborator(Page<BkCollaborator> page, String name);
 
     /**
      * 用于 select 的销售客户数据
      * @param page 分页对象
+     * @param name 姓名
      * @return 销售人员page数据
      */
-    List<OptSelectResult<BkCollaborator>> listSellCollaborator(Page<BkCollaborator> page);
+    List<OptSelectResult<BkCollaborator>> listSellCollaborator(Page<BkCollaborator> page, String name);
 }

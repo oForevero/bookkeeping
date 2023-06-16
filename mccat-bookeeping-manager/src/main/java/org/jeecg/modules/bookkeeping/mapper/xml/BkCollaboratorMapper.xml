@@ -8,17 +8,29 @@
     <select id="getAllPurchaseSelfCollaborator" resultType="org.jeecg.modules.bookkeeping.entity.BkCollaborator">
         <include refid="findGroupByCollaborator"/>
         and bc.collaborator_type != 1 and bc.collaborator_scale = 1
+        <if test="name != null">
+            and bc.companyName like CONCAT('%',#{name},'%')
+        </if>
     </select>
     <select id="getAllPurchaseCompanyCollaborator" resultType="org.jeecg.modules.bookkeeping.entity.BkCollaborator">
         <include refid="findGroupByCollaborator"/>
         and bc.collaborator_type != 1 and bc.collaborator_scale = 2
+        <if test="name != null">
+            and bc.companyName like CONCAT('%',#{name},'%')
+        </if>
     </select>
     <select id="getAllSellSelfCollaborator" resultType="org.jeecg.modules.bookkeeping.entity.BkCollaborator">
         <include refid="findGroupByCollaborator"/>
         and bc.collaborator_type != 0 and bc.collaborator_scale = 1
+        <if test="name != null">
+            and bc.companyName like CONCAT('%',#{name},'%')
+        </if>
     </select>
     <select id="getAllSellCompanyCollaborator" resultType="org.jeecg.modules.bookkeeping.entity.BkCollaborator">
         <include refid="findGroupByCollaborator"/>
         and bc.collaborator_type != 0 and bc.collaborator_scale = 2
+        <if test="name != null">
+            and bc.companyName like CONCAT('%',#{name},'%')
+        </if>
     </select>
 </mapper>

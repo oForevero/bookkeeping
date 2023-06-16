@@ -17,28 +17,32 @@ public interface BkCollaboratorMapper extends BaseMapper<BkCollaborator> {
     /**
      * 获取所有采购个体的合作伙伴数据（包含采购销售都有）
      * @param page 分页对象，默认取每页数的一半（用于分组）
+     * @param name 姓名
      * @return 分页结果
      */
-    IPage<BkCollaborator> getAllPurchaseSelfCollaborator(Page<BkCollaborator> page);
+    IPage<BkCollaborator> getAllPurchaseSelfCollaborator(Page<BkCollaborator> page, String name);
 
     /**
      * 获取所有采购公司的合作伙伴数据（包含采购销售都有）
      * @param page 分页对象，默认取每页数的一半（用于分组）
+     * @param name 姓名
      * @return 分页结果
      */
-    IPage<BkCollaborator> getAllPurchaseCompanyCollaborator(Page<BkCollaborator> page);
+    IPage<BkCollaborator> getAllPurchaseCompanyCollaborator(Page<BkCollaborator> page, String name);
 
     /**
      * 获取所有销售个体的合作伙伴数据（包含采购销售都有）
      * @param page 分页对象，默认取每页数的一半（用于分组）
+     * @param name 姓名
      * @return 分页结果
      */
-    IPage<BkCollaborator> getAllSellSelfCollaborator(Page<BkCollaborator> page);
+    IPage<BkCollaborator> getAllSellSelfCollaborator(Page<BkCollaborator> page, String name);
 
     /**
      * 获取所有销售公司的合作伙伴数据（包含采购销售都有）
      * @param page 分页对象，默认取每页数的一半（用于分组）
+     * @param name 姓名
      * @return 分页结果
      */
-    IPage<BkCollaborator> getAllSellCompanyCollaborator(Page<BkCollaborator> page);
+    IPage<BkCollaborator> getAllSellCompanyCollaborator(Page<BkCollaborator> page, String name);
 }

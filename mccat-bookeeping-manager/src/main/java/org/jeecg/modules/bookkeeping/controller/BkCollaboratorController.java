@@ -63,6 +63,8 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 
 	 /**
 	  * 查询进货客户
+	  * 范例请求地址如下
+	  * 127.0.0.1:3100/jeecgboot/bookkeeping/bkCollaborator/listPurchaseGroup?name=李
 	  * @param pageNo 当前页
 	  * @param pageSize 每页可展示数量，目前写死为 10
 	  * @param req req 对象
@@ -71,7 +73,7 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 	@AutoLog(value = "供货商/客户-进货分页分类列表查询")
 	@ApiOperation(value="供货商/客户-进货分页分类列表查询", notes="供货商/客户-进货分页分类列表查询")
 	@GetMapping(value = "/listPurchaseGroup")
-	public Result<List<OptSelectResult<BkCollaborator>>> queryPurchaseByType(@RequestBody String name,
+	public Result<List<OptSelectResult<BkCollaborator>>> queryPurchaseByType(@RequestParam String name,
 									@RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 									@RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
 									HttpServletRequest req){
@@ -82,6 +84,8 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 
 	 /**
 	  * 查询进货客户
+	  * 范例请求地址如下
+	  * 127.0.0.1:3100/jeecgboot/bookkeeping/bkCollaborator/listSellGroup?name=李
 	  * @param pageNo 当前页
 	  * @param pageSize 每页可展示数量，目前写死为 5
 	  * @param req req 对象
@@ -90,7 +94,7 @@ public class BkCollaboratorController extends JeecgController<BkCollaborator, IB
 	 @AutoLog(value = "供货商/客户-销售分页分类列表查询")
 	 @ApiOperation(value="供货商/客户-销售分页分类列表查询", notes="供货商/客户-销售分页分类列表查询")
 	 @GetMapping(value = "/listSellGroup")
-	 public Result<List<OptSelectResult<BkCollaborator>>> querySellByType(@RequestBody String name,
+	 public Result<List<OptSelectResult<BkCollaborator>>> querySellByType(@RequestParam String name,
 			 						@RequestParam(name="pageNo", defaultValue="1") Integer pageNo,
 									@RequestParam(name="pageSize", defaultValue="10") Integer pageSize,
 									HttpServletRequest req){

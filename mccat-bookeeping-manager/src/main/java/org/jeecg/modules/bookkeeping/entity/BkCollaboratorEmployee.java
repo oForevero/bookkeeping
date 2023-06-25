@@ -45,7 +45,11 @@ public class BkCollaboratorEmployee implements Serializable {
     @ApiModelProperty(value = "员工手机号")
     private Integer employeePhone;
 	/**员工是否继续合作，0正常，1不合作或离职*/
-	@Excel(name = "员工是否继续合作，0正常，1不合作或离职", width = 15)
+	@Excel(name = "员工是否继续合作，0正常，1不合作或离职", width = 15, dicCode = "employeeStatus")
     @ApiModelProperty(value = "员工是否继续合作，0正常，1不合作或离职")
     private Integer employeeStatus;
+
+    @Excel(name = "公司Id", width = 15)
+    @ApiModelProperty(value = "员工是否继续合作，0正常，1不合作或离职")
+    private Integer companyId;
 }

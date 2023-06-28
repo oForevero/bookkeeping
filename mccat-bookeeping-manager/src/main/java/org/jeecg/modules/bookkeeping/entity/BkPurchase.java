@@ -28,7 +28,7 @@ import lombok.experimental.Accessors;
 @TableName("bk_purchase")
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="bk_purchase对象", description="bk_purchase")
+@ApiModel(value="进货对象", description="bk_purchase")
 public class BkPurchase implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -42,10 +42,33 @@ public class BkPurchase implements Serializable {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @ApiModelProperty(value = "进货时间，日期数据")
     private Date purchaseDate;
+    //——————————客户相关 数据开始——————————
 	/**进货客户id*/
 	@Excel(name = "进货客户id", width = 15)
     @ApiModelProperty(value = "进货客户id")
     private Integer purchaseCollaborator;
+
+    @Excel(name = "厂商/个体 公司名称", width = 15)
+    @ApiModelProperty(value = "厂商/个体 公司名称")
+    private String companyName;
+
+    @Excel(name = "商户状态，0为只采购不销售（也就是客户），1为只销售不采购（也就是供货商），2为合作同行（既是客户又供货商）", width = 15)
+    @ApiModelProperty(value = "商户状态，0为只采购不销售（也就是客户），1为只销售不采购（也就是供货商），2为合作同行（既是客户又供货商）")
+    private Integer collaboratorType;
+    //——————————客户相关 数据结束——————————
+
+    //——————————员工相关 数据开始——————————
+    /**员工姓名*/
+    @Excel(name = "员工姓名", width = 15)
+    @ApiModelProperty(value = "员工姓名")
+    private String employeeName;
+
+    /**员工是否继续合作，0正常，1不合作或离职*/
+    @Excel(name = "员工是否继续合作，0正常，1不合作或离职", width = 15, dicCode = "employeeStatus")
+    @ApiModelProperty(value = "员工是否继续合作，0正常，1不合作或离职")
+    private Integer employeeStatus;
+    //——————————员工相关 数据结束——————————
+
 	/**进货物品id*/
 	@Excel(name = "进货物品id", width = 15)
     @ApiModelProperty(value = "进货物品id")
